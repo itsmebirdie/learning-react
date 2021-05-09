@@ -26,27 +26,36 @@ const books = [
     author: 'Morgan Housel'
     
   },
+  {
+    img: 'https://images-eu.ssl-images-amazon.com/images/I/61r-WomIz0L._AC_UL200_SR200,200_.jpg',
+    title: 'One Arranged Murder',
+    author: 'Chetan Bhagat'
+  },
 ];
-const names = ['John', 'Peter', 'Susan'];
-const newNames = names.map((name)=> {
-  return <h1>{name} </h1>;
-});
-console.log(newNames)
   
 function BookList(){
   return (
     <>
     <section className="booklist">
-      {newNames}
+      {books.map((book)=> {
+        const {img, title, author} = book;
+        return (
+          <Book book={book}></Book>
+        )
+      })}
     </section>
     </>
   );
 }
 
 const Book = (props) =>{
-  const { } = props;
-  console.log(props)
+  console.log(props);
+  const { img, title, author } = props.book;
+
   return <article className="book">
+    <img src={img} alt="" />
+    <h1>{title}</h1>
+    <h4>{author} </h4>
   </article>
 }
 
